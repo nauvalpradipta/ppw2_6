@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $data = array(
             'id' => "posts",
-            'posts' => Post::all()
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(10)
         );
         return view('posts.index')->with($data);
     }
@@ -44,10 +44,6 @@ class PostController extends Controller
             'description' => 'required',
         ]);
         
-        //$validatedData = $request->validate([
-        //    'title' => 'required|max:255',
-        //    'description' => 'required',
-        //]);
 
         $post = new Post;
         $post->title = $request->input('title');
@@ -96,6 +92,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         //Cara 1
         Post::where('id', $request->id)->update([
             'title' => $request->title,
