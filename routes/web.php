@@ -20,6 +20,7 @@ use App\Http\Controllers\SendEmailController;
 Route::resource('posts', 'App\Http\Controllers\PostController');
 
 Route::get('/', function () {
+    //echo asset("storage/file.txt");
     return view('home', [
         "title" => "Home"
     ]);
@@ -43,7 +44,7 @@ Route::get('/education', function () {
 });
 
 Auth::routes([
-    'reset' => false,
+    'reset' => true,
     ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
