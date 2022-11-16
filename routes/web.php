@@ -62,3 +62,4 @@ Route::get('/send-email',function(){
 
 Route::get('/send-email', [SendEmailController::class, 'index'])->name('kirim-email');
 Route::post('/post-email', [SendEmailController::class, 'store'])->name('post-email');
+Route::resource('gallery', 'App\Http\Controllers\GalleryController');
