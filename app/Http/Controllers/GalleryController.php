@@ -7,6 +7,8 @@ use App\Models\Post;
 
 class GalleryController extends Controller
 {
+    
+
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +19,7 @@ class GalleryController extends Controller
         $data = array(
             'id' => "posts",
             'menu' => 'Gallery',
-            'galleries' => Post::where('picture', '!=',
-    '')->whereNotNull('picture')->orderBy('created_at',
-    'desc')->paginate(30)
+            'galleries' => Post::where('picture', '!=', '')->whereNotNull('picture')->orderBy('created_at', 'desc')->paginate(30)
         );
         return view('gallery.index')->with($data);
     }
